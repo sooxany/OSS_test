@@ -4,6 +4,9 @@
     "slug": "frontend",
     "version": "1.0.0",
     "orientation": "portrait",
+    "extra": {
+      "apiUrl": "http://localhost:8000"
+    },
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
