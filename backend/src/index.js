@@ -1,5 +1,5 @@
 // 서버 초기화
-// require('dotenv').config();
+require('dotenv').config();
 const express = require('express');
 const connectDB = require('./config/db');
 const dotenv = require('dotenv');
