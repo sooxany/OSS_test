@@ -49,7 +49,10 @@ export default function LoginScreen() {
       Alert.alert('로그인 성공', '로그인 성공, 토큰: ' + response.data.token.substring(0, 10) + '...');  // 토큰의 일부만 표시
       router.replace('/main'); // 로그인 성공 시 메인 화면으로 이동 (뒤로 가기 방지)
     } catch (error) {
-      const errorMessage = error.response?.data || error.message || '오류가 발생했습니다.';
+      // error.response?.data가 객체인지 확인하고 문자열로 변환
+      const errorMessage = typeof error.response?.data === 'string' 
+      ? error.response.data 
+      : JSON.stringify(error.response?.data || error.message || '오류가 발생했습니다.');
       Alert.alert('로그인 실패', errorMessage);
     }
   };
