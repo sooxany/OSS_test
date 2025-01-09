@@ -31,17 +31,18 @@ export default function LoginScreen() {
 
   // 환경 변수 가져오기
   const apiUrl = Constants.expoConfig?.extra?.apiUrl || Constants.manifest2?.extra?.apiUrl;
-
+  // const apiUrl = 'http://192.168.0.1:8000'; // PC의 IP 주소로 수정
+ 
   if (!apiUrl) {
     Alert.alert('Error', 'API URL is not defined.');
     return;
   }
 
-  console.log(apiUrl);  // http://localhost:8000 (요기 수정함)
+  console.log(apiUrl);  // API URL 확인
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post(`${apiUrl}/login`, {
+      const response = await axios.post(`${apiUrl}/api/auth/login`, {
         username: id,
         password: password,
       });
@@ -52,7 +53,7 @@ export default function LoginScreen() {
       Alert.alert('로그인 실패', errorMessage);
     }
   };
-
+  
   return (
     <View style={styles.container}>
       <Text style={styles.title}>로그인</Text>
