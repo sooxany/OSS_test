@@ -14,7 +14,7 @@ export default function LoginScreen() {
     try {
       const response = await login(id, password);
       Alert.alert('로그인 성공', `토큰: ${response.token.substring(0, 10)}...`);
-      navigation.replace('mainscreen'); 
+      navigation.replace('Main'); 
     } catch (error) {
       Alert.alert('로그인 실패', error.message || '오류가 발생했습니다.');
     }

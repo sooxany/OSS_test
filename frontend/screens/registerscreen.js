@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Alert } from 'react-native';
+//import { useNavigation } from '@react-navigation/native';
 import InputField from '../components/InputField';
 import Button from '../components/Button';
 import { register } from '../utils/api';

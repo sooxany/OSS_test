@@ -5,8 +5,6 @@ import LoginScreen from './screens/loginscreen';
 import RegisterScreen from './screens/registerscreen';
 import MainScreen from './screens/mainscreen';
 
-
-
 const Stack = createStackNavigator();
 
 export default function App() {
