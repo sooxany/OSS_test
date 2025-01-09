@@ -6,7 +6,6 @@
     "orientation": "portrait",
     "extra": {
       "apiUrl": "http://172.31.96.124:8000"
-
     },
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",

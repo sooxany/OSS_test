@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import Constants from 'expo-constants';
 
 const apiUrl = Constants.expoConfig?.extra?.apiUrl || 'http://localhost:8000';
@@ -9,4 +10,5 @@ export const login = async (username, password) => {
     password,
   });
   return response.data;
+
 };
