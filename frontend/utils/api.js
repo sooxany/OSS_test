@@ -22,6 +22,7 @@ export const register = async (username, password) => {
       });
       return response.data;
     } catch (error) {
+      console.log('회원가입 에러:', error.response?.data || error.message);
       throw error.response?.data?.message || '회원가입 중 오류가 발생했습니다.';
     }
   };
