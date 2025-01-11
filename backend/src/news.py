@@ -96,10 +96,10 @@ def fetch_news():
                 # 요약 생성
                 summary = summarize_content(content)
                 news_data.append({
-                    "press_name": press_name,
-                    "title": title,
-                    "link": link,
-                    "summary": summary
+                    "press_name": press_name, # 언론사 이름
+                    "title": title,           # 뉴스 제목
+                    "link": link,             # 뉴스 링크
+                    "summary": summary        # 뉴스 요약
                 })
                 # time.sleep(1)  # 요청 간 지연
 
