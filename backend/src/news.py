@@ -6,23 +6,17 @@ import time
 import os
 import json
 import os
+from dotenv import load_dotenv
+
+load_dotenv()  # .env 파일에서 환경 변수 로드
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-
+openai.api_key = OPENAI_API_KEY
 
 # OpenAI API 설정
 openai.api_key = OPENAI_API_KEY
 enc = tiktoken.encoding_for_model("gpt-3.5-turbo")
 
-# 캐시 파일 경로
-CACHE_FILE = "news_summary_cache.json"
-
-# 캐시 로드
-if os.path.exists(CACHE_FILE):
-    with open(CACHE_FILE, "r") as file:
-        summary_cache = json.load(file)
-else:
-    summary_cache = {}
 
 # 관심 있는 언론사 목록
 target_press = [
@@ -37,10 +31,6 @@ def summarize_content(content):
     if tokens > 3800 or tokens < 300:
         return "요약할 수 없습니다."
 
-    # 캐시 확인
-    if content in summary_cache:
-        return summary_cache[content]
-
     for _ in range(3):  # 최대 3회 재시도
         try:
             response = openai.ChatCompletion.create(
@@ -53,11 +43,6 @@ def summarize_content(content):
                 temperature=0.5
             )
             summary = response['choices'][0]['message']['content'].strip()
-            summary_cache[content] = summary
-
-            # 캐시 저장
-            with open(CACHE_FILE, "w") as file:
-                json.dump(summary_cache, file)
 
             return summary
         except openai.error.RateLimitError:
